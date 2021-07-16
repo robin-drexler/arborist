@@ -7,7 +7,7 @@ const { strict } = require('tcompare')
 
 const Node = require('../lib/node.js')
 
-t.test('basic placement tests', t => {
+t.test('placement tests', t => {
   const path = '/some/path'
 
   // boilerplate so we can define a bunch of test cases declaratively
@@ -107,6 +107,7 @@ t.test('basic placement tests', t => {
         if (c.canPlace && c.canPlace.canPlace === KEEP)
           t.equal(c.placed, null, 'should not place if result is KEEP')
         return {
+          ...(c.parent ? { parent: c.parent.name } : {}),
           edge: `{ ${
             c.edge.from.location || 'ROOT'
           } ${c.edge.type} ${c.edge.name}@${c.edge.spec} }`,
@@ -516,7 +517,21 @@ t.test('basic placement tests', t => {
     test: (t, tree) => t.ok(tree.children.get('v')),
   })
 
-
+  // peer dep shenanigans
+  runTest('basic placement of a production dep with peer deps', {
+    tree: new Node({
+      path,
+      pkg: { dependencies: { foo: '1' }},
+    }),
+    dep: new Node({
+      pkg: { name: 'foo', version: '1.0.0', peerDependencies: { bar: '' }},
+    }),
+    nodeLoc: '',
+    peerSet: [
+      { pkg: { name: 'bar', version: '1.0.0', peerDependencies: { baz: '' }}},
+      { pkg: { name: 'baz', version: '1.0.0' }},
+    ],
+  })
 
   t.end()
 })

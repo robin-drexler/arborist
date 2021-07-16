@@ -5,13 +5,13 @@
  * Make sure to inspect the output below.  Do not ignore changes!
  */
 'use strict'
-exports[`test/place-dep.js TAP basic placement tests accept an older transitive dependency > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests accept an older transitive dependency > changes to tree 1`] = `
 --- expected
 +++ actual
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests accept an older transitive dependency > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests accept an older transitive dependency > placements 1`] = `
 Array [
   Object {
     "canPlace": null,
@@ -24,11 +24,11 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests accept an older transitive dependency > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests accept an older transitive dependency > warnings 1`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests basic placement of a production dep > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests basic placement of a production dep > changes to tree 1`] = `
 --- expected
 +++ actual
 @@ -12,8 +12,27 @@
@@ -64,7 +64,7 @@ exports[`test/place-dep.js TAP basic placement tests basic placement of a produc
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests basic placement of a production dep > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests basic placement of a production dep > placements 1`] = `
 Array [
   Object {
     "canPlace": Symbol(OK),
@@ -82,11 +82,149 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests basic placement of a production dep > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests basic placement of a production dep > warnings 1`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests dedupe a transitive dependency > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests basic placement of a production dep with peer deps > changes to tree 1`] = `
+--- expected
++++ actual
+@@ -12,8 +12,79 @@
+       "type": "prod",
+       "name": "foo",
+       "spec": "1",
+-      "to": null,
+-      "error": "MISSING",
++      "to": "node_modules/foo",
+     },
+   },
++  "children": Map {
++    "bar" => ArboristNode {
++      "name": "bar",
++      "version": "1.0.0",
++      "location": "node_modules/bar",
++      "path": "/some/path/node_modules/bar",
++      "extraneous": true,
++      "dev": true,
++      "optional": true,
++      "peer": true,
++      "edgesOut": Map {
++        "baz" => EdgeOut {
++          "type": "peer",
++          "name": "baz",
++          "spec": "*",
++          "to": "node_modules/baz",
++        },
++      },
++      "edgesIn": Set {
++        EdgeIn {
++          "type": "peer",
++          "name": "bar",
++          "spec": "*",
++          "from": "node_modules/foo",
++        },
++      },
++    },
++    "baz" => ArboristNode {
++      "name": "baz",
++      "version": "1.0.0",
++      "location": "node_modules/baz",
++      "path": "/some/path/node_modules/baz",
++      "extraneous": true,
++      "dev": true,
++      "optional": true,
++      "peer": true,
++      "edgesIn": Set {
++        EdgeIn {
++          "type": "peer",
++          "name": "baz",
++          "spec": "*",
++          "from": "node_modules/bar",
++        },
++      },
++    },
++    "foo" => ArboristNode {
++      "name": "foo",
++      "version": "1.0.0",
++      "location": "node_modules/foo",
++      "path": "/some/path/node_modules/foo",
++      "extraneous": true,
++      "dev": true,
++      "optional": true,
++      "peer": true,
++      "edgesOut": Map {
++        "bar" => EdgeOut {
++          "type": "peer",
++          "name": "bar",
++          "spec": "*",
++          "to": "node_modules/bar",
++        },
++      },
++      "edgesIn": Set {
++        EdgeIn {
++          "type": "prod",
++          "name": "foo",
++          "spec": "1",
++          "from": "",
++        },
++      },
++    },
++  },
+ }
+
+`
+
+exports[`test/place-dep.js TAP placement tests basic placement of a production dep with peer deps > placements 1`] = `
+Array [
+  Object {
+    "canPlace": Symbol(OK),
+    "canPlaceSelf": Symbol(OK),
+    "checks": Map {
+      "" => Array [
+        Symbol(OK),
+        Symbol(OK),
+      ],
+    },
+    "dep": "foo@1.0.0",
+    "edge": "{ ROOT prod foo@1 }",
+    "placed": "node_modules/foo",
+  },
+  Object {
+    "canPlace": Symbol(OK),
+    "canPlaceSelf": Symbol(OK),
+    "checks": Map {
+      "" => Array [
+        Symbol(OK),
+        Symbol(OK),
+      ],
+    },
+    "dep": "bar@1.0.0",
+    "edge": "{ node_modules/foo peer bar@ }",
+    "parent": "foo",
+    "placed": "node_modules/bar",
+  },
+  Object {
+    "canPlace": Symbol(OK),
+    "canPlaceSelf": Symbol(OK),
+    "checks": Map {
+      "" => Array [
+        Symbol(OK),
+        Symbol(OK),
+      ],
+    },
+    "dep": "baz@1.0.0",
+    "edge": "{ node_modules/bar peer baz@ }",
+    "parent": "bar",
+    "placed": "node_modules/baz",
+  },
+]
+`
+
+exports[`test/place-dep.js TAP placement tests basic placement of a production dep with peer deps > warnings 1`] = `
+Array []
+`
+
+exports[`test/place-dep.js TAP placement tests dedupe a transitive dependency > changes to tree 1`] = `
 --- expected
 +++ actual
 @@ -22,6 +22,30 @@
@@ -143,7 +281,7 @@ exports[`test/place-dep.js TAP basic placement tests dedupe a transitive depende
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests dedupe a transitive dependency > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests dedupe a transitive dependency > placements 1`] = `
 Array [
   Object {
     "canPlace": Symbol(OK),
@@ -165,11 +303,11 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests dedupe a transitive dependency > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests dedupe a transitive dependency > warnings 1`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests dep with load error > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests dep with load error > changes to tree 1`] = `
 --- expected
 +++ actual
 @@ -12,9 +12,35 @@
@@ -213,7 +351,7 @@ exports[`test/place-dep.js TAP basic placement tests dep with load error > chang
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests dep with load error > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests dep with load error > placements 1`] = `
 Array [
   Object {
     "canPlace": Symbol(OK),
@@ -231,11 +369,11 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests dep with load error > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests dep with load error > warnings 1`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests explicit placement of a production dep > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests explicit placement of a production dep > changes to tree 1`] = `
 --- expected
 +++ actual
 @@ -12,8 +12,27 @@
@@ -271,7 +409,7 @@ exports[`test/place-dep.js TAP basic placement tests explicit placement of a pro
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests explicit placement of a production dep > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests explicit placement of a production dep > placements 1`] = `
 Array [
   Object {
     "canPlace": Symbol(OK),
@@ -289,11 +427,11 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests explicit placement of a production dep > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests explicit placement of a production dep > warnings 1`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests keep, but dedupe > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests keep, but dedupe > changes to tree 1`] = `
 --- expected
 +++ actual
 @@ -43,29 +43,9 @@
@@ -385,7 +523,7 @@ exports[`test/place-dep.js TAP basic placement tests keep, but dedupe > changes 
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests keep, but dedupe > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests keep, but dedupe > placements 1`] = `
 Array [
   Object {
     "canPlace": Symbol(KEEP),
@@ -407,11 +545,11 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests keep, but dedupe > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests keep, but dedupe > warnings 1`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests nest a transitive dependency > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests nest a transitive dependency > changes to tree 1`] = `
 --- expected
 +++ actual
 @@ -38,13 +38,6 @@
@@ -468,7 +606,7 @@ exports[`test/place-dep.js TAP basic placement tests nest a transitive dependenc
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests nest a transitive dependency > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests nest a transitive dependency > placements 1`] = `
 Array [
   Object {
     "canPlace": Symbol(OK),
@@ -490,11 +628,11 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests nest a transitive dependency > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests nest a transitive dependency > warnings 1`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests nest because globalStyle > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests nest because globalStyle > changes to tree 1`] = `
 --- expected
 +++ actual
 @@ -37,8 +37,7 @@
@@ -537,7 +675,7 @@ exports[`test/place-dep.js TAP basic placement tests nest because globalStyle > 
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests nest because globalStyle > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests nest because globalStyle > placements 1`] = `
 Array [
   Object {
     "canPlace": Symbol(OK),
@@ -555,11 +693,11 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests nest because globalStyle > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests nest because globalStyle > warnings 1`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests nest even though unnecessary, because legacy bundling > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests nest even though unnecessary, because legacy bundling > changes to tree 1`] = `
 --- expected
 +++ actual
 @@ -63,8 +63,7 @@
@@ -602,7 +740,7 @@ exports[`test/place-dep.js TAP basic placement tests nest even though unnecessar
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests nest even though unnecessary, because legacy bundling > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests nest even though unnecessary, because legacy bundling > placements 1`] = `
 Array [
   Object {
     "canPlace": Symbol(OK),
@@ -620,11 +758,11 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests nest even though unnecessary, because legacy bundling > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests nest even though unnecessary, because legacy bundling > warnings 1`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests nest only 1 level due to globalStyle > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests nest only 1 level due to globalStyle > changes to tree 1`] = `
 --- expected
 +++ actual
 @@ -63,8 +63,7 @@
@@ -665,7 +803,7 @@ exports[`test/place-dep.js TAP basic placement tests nest only 1 level due to gl
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests nest only 1 level due to globalStyle > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests nest only 1 level due to globalStyle > placements 1`] = `
 Array [
   Object {
     "canPlace": Symbol(OK),
@@ -687,11 +825,11 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests nest only 1 level due to globalStyle > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests nest only 1 level due to globalStyle > warnings 1`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests prefer to dedupe rather than nest > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests prefer to dedupe rather than nest > changes to tree 1`] = `
 --- expected
 +++ actual
 @@ -24,7 +24,7 @@
@@ -734,7 +872,7 @@ exports[`test/place-dep.js TAP basic placement tests prefer to dedupe rather tha
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests prefer to dedupe rather than nest > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests prefer to dedupe rather than nest > placements 1`] = `
 Array [
   Object {
     "canPlace": Symbol(REPLACE),
@@ -756,11 +894,11 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests prefer to dedupe rather than nest > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests prefer to dedupe rather than nest > warnings 1`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests replace higher up, and dedupe descendants > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests replace higher up, and dedupe descendants > changes to tree 1`] = `
 --- expected
 +++ actual
 @@ -47,55 +47,9 @@
@@ -974,7 +1112,7 @@ exports[`test/place-dep.js TAP basic placement tests replace higher up, and dedu
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests replace higher up, and dedupe descendants > changes to tree 2`] = `
+exports[`test/place-dep.js TAP placement tests replace higher up, and dedupe descendants > changes to tree 2`] = `
 --- expected
 +++ actual
 @@ -24,7 +24,7 @@
@@ -1044,7 +1182,7 @@ exports[`test/place-dep.js TAP basic placement tests replace higher up, and dedu
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests replace higher up, and dedupe descendants > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests replace higher up, and dedupe descendants > placements 1`] = `
 Array [
   Object {
     "canPlace": Symbol(REPLACE),
@@ -1066,7 +1204,7 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests replace higher up, and dedupe descendants > placements 2`] = `
+exports[`test/place-dep.js TAP placement tests replace higher up, and dedupe descendants > placements 2`] = `
 Array [
   Object {
     "canPlace": Symbol(REPLACE),
@@ -1088,15 +1226,15 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests replace higher up, and dedupe descendants > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests replace higher up, and dedupe descendants > warnings 1`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests replace higher up, and dedupe descendants > warnings 2`] = `
+exports[`test/place-dep.js TAP placement tests replace higher up, and dedupe descendants > warnings 2`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests skip over peer dependents in the ancestry walkup > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests skip over peer dependents in the ancestry walkup > changes to tree 1`] = `
 --- expected
 +++ actual
 @@ -68,8 +68,7 @@
@@ -1152,7 +1290,7 @@ exports[`test/place-dep.js TAP basic placement tests skip over peer dependents i
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests skip over peer dependents in the ancestry walkup > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests skip over peer dependents in the ancestry walkup > placements 1`] = `
 Array [
   Object {
     "canPlace": Symbol(OK),
@@ -1174,17 +1312,17 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests skip over peer dependents in the ancestry walkup > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests skip over peer dependents in the ancestry walkup > warnings 1`] = `
 Array []
 `
 
-exports[`test/place-dep.js TAP basic placement tests upgrade a transitive dependency > changes to tree 1`] = `
+exports[`test/place-dep.js TAP placement tests upgrade a transitive dependency > changes to tree 1`] = `
 --- expected
 +++ actual
 
 `
 
-exports[`test/place-dep.js TAP basic placement tests upgrade a transitive dependency > placements 1`] = `
+exports[`test/place-dep.js TAP placement tests upgrade a transitive dependency > placements 1`] = `
 Array [
   Object {
     "canPlace": null,
@@ -1197,6 +1335,6 @@ Array [
 ]
 `
 
-exports[`test/place-dep.js TAP basic placement tests upgrade a transitive dependency > warnings 1`] = `
+exports[`test/place-dep.js TAP placement tests upgrade a transitive dependency > warnings 1`] = `
 Array []
 `
