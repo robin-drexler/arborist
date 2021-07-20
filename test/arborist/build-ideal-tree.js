@@ -1290,7 +1290,7 @@ t.test('more peer dep conflicts', t => {
     },
   })
 
-  // t.jobs = cases.length
+  t.jobs = cases.length
   t.plan(cases.length)
 
   for (const [name, {pkg, error, resolvable, add}] of cases) {
