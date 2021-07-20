@@ -1,3 +1,8 @@
+// the tree-checking is too abusively slow on Windows, and
+// can make the test time out unnecessarily.
+if (process.platform === 'win32')
+  process.env.ARBORIST_DEBUG = 0
+
 const {basename, resolve, relative} = require('path')
 const pacote = require('pacote')
 const t = require('tap')
@@ -1290,7 +1295,8 @@ t.test('more peer dep conflicts', t => {
     },
   })
 
-  t.jobs = cases.length
+  if (process.platform !== 'win32')
+    t.jobs = cases.length
   t.plan(cases.length)
 
   for (const [name, {pkg, error, resolvable, add}] of cases) {
