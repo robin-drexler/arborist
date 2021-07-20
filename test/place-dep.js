@@ -78,7 +78,7 @@ t.test('placement tests', t => {
     }
 
     t.test(desc, t => {
-      const before = tree.toJSON()
+      const before = normalizePaths(tree.toJSON())
 
       // the 'error' arg is the ERESOLVE we expect to get
       if (error) {
