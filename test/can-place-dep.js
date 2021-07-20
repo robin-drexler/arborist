@@ -813,7 +813,7 @@ t.test('basic placement check tests', t => {
     explicitRequest: true,
   })
 
-  runTest('existing peer set cannot be pushed deeper, neither can new set, conflict on peer xyz', {
+  runTest('existing peer set cannot be pushed deeper, neither can new set, conflict on peer', {
     tree: new Node({
       path,
       pkg: {
@@ -1056,7 +1056,7 @@ t.test('basic placement check tests', t => {
     expectSelf: REPLACE,
   })
 
-  runTest('prod dep directly on conflicted peer, newer', {
+  runTest('prod dep directly on conflicted peer, older', {
     tree: new Node({
       path,
       pkg: { dependencies: { a: '2', b: '1' }},

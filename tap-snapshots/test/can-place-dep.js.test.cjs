@@ -101,7 +101,7 @@ Array [
 ]
 `
 
-exports[`test/can-place-dep.js TAP basic placement check tests existing peer set cannot be pushed deeper, neither can new set, conflict on peer xyz > conflict children 1`] = `
+exports[`test/can-place-dep.js TAP basic placement check tests existing peer set cannot be pushed deeper, neither can new set, conflict on peer > conflict children 1`] = `
 Array [
   Object {
     "canPlace": Symbol(CONFLICT),
@@ -236,7 +236,7 @@ Array [
 ]
 `
 
-exports[`test/can-place-dep.js TAP basic placement check tests prod dep directly on conflicted peer, newer > conflict children 2`] = `
+exports[`test/can-place-dep.js TAP basic placement check tests prod dep directly on conflicted peer, older > conflict children 1`] = `
 Array [
   Object {
     "canPlace": Symbol(CONFLICT),
