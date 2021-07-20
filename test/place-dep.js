@@ -5,6 +5,8 @@ const { KEEP } = require('../lib/can-place-dep.js')
 // for diffing trees when we place something
 const { strict } = require('tcompare')
 
+const { normalizePaths } = require('./utils.js')
+
 const Node = require('../lib/node.js')
 const Link = require('../lib/link.js')
 
@@ -81,8 +83,8 @@ t.test('placement tests', t => {
       // the 'error' arg is the ERESOLVE we expect to get
       if (error) {
         const thrown = t.throws(place)
-        t.matchSnapshot(thrown, 'thrown error')
-        const after = tree.toJSON()
+        t.matchSnapshot(normalizePaths(thrown), 'thrown error')
+        const after = normalizePaths(tree.toJSON())
         t.strictSame(before, after, 'tree should not change')
         t.end()
 
@@ -111,15 +113,15 @@ t.test('placement tests', t => {
       if (test)
         test(t, tree)
 
-      const after = tree.toJSON()
+      const after = normalizePaths(tree.toJSON())
       const { diff } = strict(after, before)
 
       t.matchSnapshot(diff, 'changes to tree')
-      t.matchSnapshot(warnings, 'warnings')
+      t.matchSnapshot(normalizePaths(warnings), 'warnings')
       t.matchSnapshot([pd, ...pd.allChildren].map(c => {
         if (c.canPlace && c.canPlace.canPlace === KEEP)
           t.equal(c.placed, null, 'should not place if result is KEEP')
-        return {
+        return normalizePaths({
           ...(c.parent ? { parent: c.parent.name } : {}),
           edge: `{ ${
             c.edge.from.location || 'ROOT'
@@ -130,7 +132,7 @@ t.test('placement tests', t => {
           placed: c.placed && c.placed.location,
           checks: new Map([...pd.checks].map(([target, cpd]) =>
             [target.location, [cpd.canPlace, cpd.canPlaceSelf]])),
-        }
+        })
       }), 'placements')
 
       t.end()
