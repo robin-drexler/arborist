@@ -1327,7 +1327,7 @@ t.test('dont rely on legacy _resolved for file: nodes', async t => {
     },
     path: '/some/completely/different/path',
   })
-  t.equal(notOld.resolved, 'file:/x/y/z/blorg.tgz')
+  t.equal(normalizePath(notOld.resolved), 'file:/x/y/z/blorg.tgz')
 })
 
 t.test('reparenting keeps children in root inventory', async t => {
