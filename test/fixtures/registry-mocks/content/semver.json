@@ -1,10 +1,10 @@
 {
   "_id": "semver",
-  "_rev": "392-91a4b6c5fa66cbcabfc3b7411c339f6b",
+  "_rev": "399-9b37b056cc92e16a36e0fa4df354e122",
   "name": "semver",
   "description": "The semantic version parser used by npm.",
   "dist-tags": {
-    "latest": "7.3.2",
+    "latest": "7.3.5",
     "legacy": "5.7.1"
   },
   "versions": {
@@ -4839,32 +4839,278 @@
         "tmp": "tmp/semver_7.3.2_1586886208300_0.6137271223938625"
       },
       "_hasShrinkwrap": false
+    },
+    "7.3.3": {
+      "name": "semver",
+      "version": "7.3.3",
+      "description": "The semantic version parser used by npm.",
+      "main": "index.js",
+      "scripts": {
+        "test": "tap",
+        "snap": "tap",
+        "preversion": "npm test",
+        "postversion": "npm publish",
+        "postpublish": "git push origin --follow-tags"
+      },
+      "devDependencies": {
+        "tap": "^14.10.7"
+      },
+      "license": "ISC",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/npm/node-semver.git"
+      },
+      "bin": {
+        "semver": "bin/semver.js"
+      },
+      "tap": {
+        "check-coverage": true,
+        "coverage-map": "map.js"
+      },
+      "engines": {
+        "node": ">=10"
+      },
+      "dependencies": {
+        "lru-cache": "^4.1.5"
+      },
+      "gitHead": "984a8d5f2d403f90ca95c201e9ba061ac96ca3fc",
+      "bugs": {
+        "url": "https://github.com/npm/node-semver/issues"
+      },
+      "homepage": "https://github.com/npm/node-semver#readme",
+      "_id": "semver@7.3.3",
+      "_nodeVersion": "15.3.0",
+      "_npmVersion": "7.0.12",
+      "dist": {
+        "integrity": "sha512-kBGrn+sE2tyi6f4c9aFrrYRSTTF5yNOEVRBCdpcgykFp3jt2ZGlBwzIwWER9J9HZnQa9IF1TrR8Xy2UU+eaUhQ==",
+        "shasum": "a6cef9257e40f4b8a78cd97e106d215f8a3ebdc9",
+        "tarball": "https://registry.npmjs.org/semver/-/semver-7.3.3.tgz",
+        "fileCount": 52,
+        "unpackedSize": 85928,
+        "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfxpm+CRA9TVsSAnZWagAAju4P/1m7tcQnyyzmUjycgHno\nH8RYkEm0DZEePHf/altpa1kpRF94QfVXOep3dJiz3zH9FHIjsoEDQWMI1bkW\nzI9z7ItWeepg8CnIZxr1aQJqPy8S4sKV47SgC+GinOIVPdqsJCIrLhD9ADWf\n5i/o10jLDbSW4SSI78YK9n4H0RHqQCZFcbT1Ir9iQorh/J/9ecip1Ut8oZSx\nuCoK9S+jvLq0XWi5kN6y5MUDzE41QetLNnWVuIbYAOvW8PPzv5HBX1+KWEra\nQ12eNdZ+1kQij+RSlUXvsBsRtaNnZoOO8Waxy2tWFgy9132OKmbd1jDEOPqG\nk2oxbtiu1b0n5NUYIiu8AaH6NW9FloyGcqzOH3zsI6LKiJ1N3NknVptZLVAA\n8MXYzhKELw4uLCCRTmMxtRIqRYm9H9Fvoe3mFLbOIvAorO4DtJKXV3p8fNt3\nkYXlpo8mJaccV6qZIXP/bTO5BgfDt5HeotwMLAOu0PtsaiuxWj+Yr1yadU9e\npN6/t/ijt3zcNEo74HMlD4Ld3UhB4xzb07iO04t4ceCZ0+lokTDPTDi87Agc\nWERccemir9QGPKlTHFwwJGFfAJjdxt3SK5jKHs6uVqhJb8WqD4VCoKt9oV19\nyuepdm3SttmxicdLWNovStoEtnflbyxz680VL6GHEJjNSexWAbh/7b+SZd64\nJvRe\r\n=zBtA\r\n-----END PGP SIGNATURE-----\r\n"
+      },
+      "_npmUser": {
+        "name": "isaacs",
+        "email": "i@izs.me"
+      },
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "nlf",
+          "email": "quitlahok@gmail.com"
+        },
+        {
+          "name": "ruyadorno",
+          "email": "ruyadorno@hotmail.com"
+        },
+        {
+          "name": "darcyclarke",
+          "email": "darcy@darcyclarke.me"
+        },
+        {
+          "name": "isaacs",
+          "email": "i@izs.me"
+        }
+      ],
+      "_npmOperationalInternal": {
+        "host": "s3://npm-registry-packages",
+        "tmp": "tmp/semver_7.3.3_1606851005696_0.7698350137108039"
+      },
+      "_hasShrinkwrap": false
+    },
+    "7.3.4": {
+      "name": "semver",
+      "version": "7.3.4",
+      "description": "The semantic version parser used by npm.",
+      "main": "index.js",
+      "scripts": {
+        "test": "tap",
+        "snap": "tap",
+        "preversion": "npm test",
+        "postversion": "npm publish",
+        "postpublish": "git push origin --follow-tags"
+      },
+      "devDependencies": {
+        "tap": "^14.10.7"
+      },
+      "license": "ISC",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/npm/node-semver.git"
+      },
+      "bin": {
+        "semver": "bin/semver.js"
+      },
+      "tap": {
+        "check-coverage": true,
+        "coverage-map": "map.js"
+      },
+      "engines": {
+        "node": ">=10"
+      },
+      "dependencies": {
+        "lru-cache": "^6.0.0"
+      },
+      "gitHead": "093b40f8a7cb67946527b739fe8f8974c888e2a0",
+      "bugs": {
+        "url": "https://github.com/npm/node-semver/issues"
+      },
+      "homepage": "https://github.com/npm/node-semver#readme",
+      "_id": "semver@7.3.4",
+      "_nodeVersion": "15.3.0",
+      "_npmVersion": "7.0.12",
+      "dist": {
+        "integrity": "sha512-tCfb2WLjqFAtXn4KEdxIhalnRtoKFN7nAwj0B3ZXCbQloV2tq5eDbcTmT68JJD3nRJq24/XgxtQKFIpQdtvmVw==",
+        "shasum": "27aaa7d2e4ca76452f98d3add093a72c943edc97",
+        "tarball": "https://registry.npmjs.org/semver/-/semver-7.3.4.tgz",
+        "fileCount": 52,
+        "unpackedSize": 85928,
+        "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfxqRSCRA9TVsSAnZWagAAnUoP/AptW1ht7QRFkAT38G04\nCNgOEblIfwYRC+HOb1lIrlCXqh3EVko/6Jadb6fk8/2NmZ93PKSp/al+zkBH\niFSYI4uzNwZG09F4M5t76u/FStTuAA8TcIfkht/E5FEPw5G6xN5uRZhIYJ2r\nIatDpWRkR8o5kQ/kMHak2FBHGlHoIbxk96a3jb3vBYjrhLjyR4M4DD/xM+sH\noomBXAD/sUVt48vEwHrhPmKlgUH4n2UZe2QbKhva/gwEBtQ8LHeyzJG9sjg5\ngA24U8+LEnul56FDOwJHjMIIUPhr1u8Vs9d72edxOCIvvoUqrpDDToA6uB4O\nacF7PYoyumroIih4OuYVq7rE1XHcIaa82+ua5Xx4KbklWhN5Zp6UbKKSi1LN\nBI9vd63w+GwVFrEDZulPIZ+Qx52k4SvMmQS0y/4y1/6poBjfxQX043/Gj94h\nQNH1d1H3mrceoxghnaXelRnoRj8FjTLkNBOyJDF7re76vahpwK+lTjVNFeEz\nQRRegAh8ODac+HXIxdAQ0VHUXT+CHuPWli36p1Z/ABF1eRlAoDoxeDaVjjkt\nibd1A7wVBlT0riHEoejjwUW8LwfO+6MQyQpPF16Xl9MpiFlfarE/AxbPuBdU\nlNJQ+SdrH84GylNnj5UnJN2aeDKBtWRNKizW2uMHWPOlkTsgzZ+yBTc59O5E\nvYcV\r\n=8dWH\r\n-----END PGP SIGNATURE-----\r\n"
+      },
+      "_npmUser": {
+        "name": "isaacs",
+        "email": "i@izs.me"
+      },
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "nlf",
+          "email": "quitlahok@gmail.com"
+        },
+        {
+          "name": "ruyadorno",
+          "email": "ruyadorno@hotmail.com"
+        },
+        {
+          "name": "darcyclarke",
+          "email": "darcy@darcyclarke.me"
+        },
+        {
+          "name": "isaacs",
+          "email": "i@izs.me"
+        }
+      ],
+      "_npmOperationalInternal": {
+        "host": "s3://npm-registry-packages",
+        "tmp": "tmp/semver_7.3.4_1606853713862_0.733630657601954"
+      },
+      "_hasShrinkwrap": false
+    },
+    "7.3.5": {
+      "name": "semver",
+      "version": "7.3.5",
+      "description": "The semantic version parser used by npm.",
+      "main": "index.js",
+      "scripts": {
+        "test": "tap",
+        "snap": "tap",
+        "preversion": "npm test",
+        "postversion": "npm publish",
+        "postpublish": "git push origin --follow-tags"
+      },
+      "devDependencies": {
+        "tap": "^14.10.7"
+      },
+      "license": "ISC",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/npm/node-semver.git"
+      },
+      "bin": {
+        "semver": "bin/semver.js"
+      },
+      "tap": {
+        "check-coverage": true,
+        "coverage-map": "map.js"
+      },
+      "engines": {
+        "node": ">=10"
+      },
+      "dependencies": {
+        "lru-cache": "^6.0.0"
+      },
+      "gitHead": "e79ac3a450e8bb504e78b8159e3efc70895699b8",
+      "bugs": {
+        "url": "https://github.com/npm/node-semver/issues"
+      },
+      "homepage": "https://github.com/npm/node-semver#readme",
+      "_id": "semver@7.3.5",
+      "_nodeVersion": "15.3.0",
+      "_npmVersion": "7.6.3",
+      "dist": {
+        "integrity": "sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==",
+        "shasum": "0b621c879348d8998e4b0e4be94b3f12e6018ef7",
+        "tarball": "https://registry.npmjs.org/semver/-/semver-7.3.5.tgz",
+        "fileCount": 52,
+        "unpackedSize": 88244,
+        "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgWUZxCRA9TVsSAnZWagAAKCcP/2yi0PxM+y/lOwz+p5MM\nin3w++rvLrBbsPGqHexm1BeOdxJc3lieiblulisCazfy2r/e/3LAlO5f12UL\n2Ed0VLBTGRAVg69uSAv6xwXVhHNUFIg5HPe6/+czbnW2hAL5Nzp6K+YlVVg0\nzAZYoqGzmOLrS6r8+G6Au2jCv+BkmsWfTGkGK8QG9J6GUEBwNOInThEYY+JL\noRpdx0PoWXUNXBQVHmiNB1SvZEnVhorERdQpk4rLn37LrhbcphIvhd6exBwm\n7TqxrwZdXYkQfTwSGdiYofidzDX8G3J7V8aby/PN7gmAarXegpmdJK+npmFS\nzQJnp1KpnB3cR/5kfD6F6MTNlBO8lcYPO4eh48gnTU44BAKww3zsToJw3GCH\ny7H51qKSeVpUgdM2BBhBJZs+J6OUXJfU22hcHxIDGU5E7NQJioDsLUZFHRQV\neP0yo+9L4Ct/N0YH7iPUpyWinyd2zjhLb8QNSC/lUkf+zcvuHUBY+DGu8QTu\nqwgp1WDRd/ypDt2s5LPgClDmL0cB+pkHnZMGWFRJoOQYf0JwDpWIqKP6mNXq\n6bEzgdZ9OHU76PHX55QlF3eyKD7N5DAHbW2/cErzzmDXKkeoDTne83hMIqfF\nXv6Q9Z5U9fiF39gsoZR26owNQ0qlzaDbjlN8hGpNq/fwjzTFafu7QJ13ha6q\n3kTc\r\n=2ZLt\r\n-----END PGP SIGNATURE-----\r\n"
+      },
+      "_npmUser": {
+        "name": "isaacs",
+        "email": "i@izs.me"
+      },
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "gar",
+          "email": "gar+npm@danger.computer"
+        },
+        {
+          "name": "isaacs",
+          "email": "i@izs.me"
+        },
+        {
+          "name": "darcyclarke",
+          "email": "darcy@darcyclarke.me"
+        },
+        {
+          "name": "ruyadorno",
+          "email": "ruyadorno@hotmail.com"
+        },
+        {
+          "name": "nlf",
+          "email": "quitlahok@gmail.com"
+        }
+      ],
+      "_npmOperationalInternal": {
+        "host": "s3://npm-registry-packages",
+        "tmp": "tmp/semver_7.3.5_1616463472660_0.6244304507667418"
+      },
+      "_hasShrinkwrap": false
     }
   },
   "maintainers": [
     {
-      "email": "quitlahok@gmail.com",
-      "name": "nlf"
+      "email": "luke@lukekarrys.com",
+      "name": "lukekarrys"
     },
     {
-      "email": "ruyadorno@hotmail.com",
-      "name": "ruyadorno"
+      "email": "gimli01@github.com",
+      "name": "gimli01"
+    },
+    {
+      "email": "gar+npm@danger.computer",
+      "name": "gar"
+    },
+    {
+      "email": "i@izs.me",
+      "name": "isaacs"
     },
     {
       "email": "darcy@darcyclarke.me",
       "name": "darcyclarke"
     },
     {
-      "email": "evilpacket@gmail.com",
-      "name": "adam_baldwin"
+      "email": "ruyadorno@hotmail.com",
+      "name": "ruyadorno"
     },
     {
-      "email": "i@izs.me",
-      "name": "isaacs"
+      "email": "quitlahok@gmail.com",
+      "name": "nlf"
     }
   ],
   "time": {
-    "modified": "2020-10-13T05:05:35.753Z",
+    "modified": "2021-06-04T22:33:27.834Z",
     "created": "2011-02-12T00:20:25.690Z",
     "1.0.0": "2011-02-12T00:20:26.037Z",
     "1.0.1": "2011-02-18T17:15:49.775Z",
@@ -4955,7 +5201,10 @@
     "7.2.3": "2020-04-13T18:31:33.110Z",
     "7.3.0": "2020-04-14T01:08:44.962Z",
     "7.3.1": "2020-04-14T16:56:08.021Z",
-    "7.3.2": "2020-04-14T17:43:28.451Z"
+    "7.3.2": "2020-04-14T17:43:28.451Z",
+    "7.3.3": "2020-12-01T19:30:05.865Z",
+    "7.3.4": "2020-12-01T20:15:13.977Z",
+    "7.3.5": "2021-03-23T01:37:52.803Z"
   },
   "repository": {
     "type": "git",
@@ -5144,5 +5393,7 @@
     "url": "https://github.com/npm/node-semver/issues"
   },
   "license": "ISC",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "_cached": false,
+  "_contentLength": 0
 }

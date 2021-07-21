@@ -307,6 +307,21 @@ t.test('transitive deps containing asymmetrical bin with lockfile', t => {
     .then(checkBin)
 })
 
+t.test('does not remove bins for nodes on trash list if bin with same name exists in other node', t => {
+  const path = fixture(t, 'bin-duplicate-name')
+
+  const bin = resolve(path, 'node_modules/.bin/sass')
+
+  const checkBin = process.platform === 'win32'
+    ? () => t.ok(fs.statSync(bin + '.cmd').isFile(), 'created shim')
+    : () => t.ok(fs.lstatSync(bin).isSymbolicLink(), 'created symlink')
+
+  const arb = newArb({ path })
+
+  return arb.reify({})
+    .then(checkBin)
+})
+
 t.test('omit optional dep', t => {
   const path = fixture(t, 'tap-react15-collision-legacy-sw')
   const ignoreScripts = true

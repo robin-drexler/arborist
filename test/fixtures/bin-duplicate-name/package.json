@@ -1,0 +1,8 @@
+{
+  "name": "@isaacs/bin-duplicate-name",
+  "version": "1.0.0",
+  "dependencies": {
+    "@financial-times/sass": "1.32.4",
+    "semver": "^7.3.5"
+  }
+}
